@@ -126,6 +126,76 @@ para criar os produtos manualmente via API.
 
 ---
 
+# Insomnia (API Testing)
+
+Este projeto já inclui um arquivo de configuração do Insomnia com todas as rotas da API organizadas.
+
+---
+
+## 📦 Arquivo incluído no projeto
+
+Na raiz do backend, você encontrará:
+
+```txt
+/insomnia/case-cell-shop.yaml
+```
+
+Esse arquivo contém todas as requisições da API:
+
+* Products
+* Orders
+* Fluxos completos de criação e consulta
+
+---
+
+## 📥 Instalar o Insomnia
+
+Para testar a API, é necessário instalar o Insomnia:
+
+👉 https://insomnia.rest/download
+
+O Insomnia está disponível para:
+
+* macOS
+* Windows
+* Linux
+
+---
+
+## 🚀 Como importar a collection
+
+Após instalar o Insomnia:
+
+1. Abra o aplicativo
+2. Clique em **Import**
+3. Selecione o arquivo:
+
+```txt
+case-cell-shop.yaml
+```
+
+4. Todas as rotas serão carregadas automaticamente
+
+---
+
+## ⚙️ Pré-requisitos para testes
+
+Antes de usar as requisições:
+
+### Suba o banco de dados:
+
+```bash
+docker compose up -d
+```
+
+### Inicie a API:
+
+```bash
+npm run start:dev
+```
+
+---
+
 ## Endpoint para criar produtos
 
 ```http
