@@ -454,6 +454,273 @@ PATCH /orders/ea9cdf36-dabf-4f71-b145-ce6bfd27c85c/cancel
 
 ---
 
+# Prompts utilizados:
+
+## prompt para estruturação do projeto:
+
+```
+Quero que você me ajude a construir e entender um projeto fullstack de e-commerce chamado "Case Cell Shop".
+
+Vou usar:
+
+FRONTEND:
+- React + TypeScript
+- React Router DOM
+- React Query (ou hooks customizados)
+- TailwindCSS
+
+BACKEND:
+- Node.js com NestJS
+- TypeORM
+- PostgreSQL
+- Docker
+
+OBJETIVO:
+Uma loja simples de capinhas de celular com fluxo completo:
+
+1. Listagem de produtos
+2. Seleção de produto
+3. Carrinho de compras
+4. Checkout (envio de pedido)
+5. Confirmação do pedido
+6. Histórico de pedidos
+7. Detalhe de pedido
+8. Cancelamento de pedido
+
+---
+
+Quero que você atue como um mentor técnico me guiando passo a passo.
+
+Quero que você:
+
+### 1. Me ajude a desenhar o fluxo da aplicação
+- como os dados passam entre telas no frontend
+- como o carrinho deve funcionar sem Redux
+- como persistir estado entre rotas
+
+### 2. Me ajude a construir o backend
+- quais endpoints preciso criar primeiro
+- como estruturar controllers, services e entities no NestJS
+- como modelar Order com itens dentro
+
+### 3. Me ajude a integrar frontend com backend
+- como consumir API corretamente
+- como lidar com loading, error e success
+- como tipar corretamente as respostas
+
+---
+
+IMPORTANTE:
+- Não pule etapas
+- Explique como se eu estivesse construindo o projeto do zero
+- Sempre me diga alternativas (simples vs avançado)
+- Foque em boas práticas reais de mercado
+
+Vamos começar pelo planejamento geral do sistema.
+```
+
+--- 
+
+## prompt para enteder o relacionamento entre produtos e pedidos
+```
+Estou construindo um backend de e-commerce com NestJS + TypeORM + PostgreSQL.
+
+Tenho as entidades:
+
+- Order
+- Product
+- OrderItem
+
+---
+
+##  Objetivo
+
+Quero entender profundamente como funciona o relacionamento entre:
+
+- Order (pedido)
+- OrderItem (itens do pedido)
+- Product (produto)
+
+---
+
+##  Problema real
+
+Preciso garantir que:
+
+- Um pedido pode ter vários itens
+- Cada item referencia um produto
+- O item deve armazenar snapshot do preço no momento da compra
+- O estoque do produto deve ser atualizado ao criar o pedido
+
+---
+
+##  O que quero entender antes do código
+
+Explique como um dev senior:
+
+1. Por que OrderItem é obrigatório nesse cenário
+2. Como esse modelo funciona no banco relacional
+3. Como garantir consistência de estoque + pedidos
+
+---
+
+##  Depois quero implementação NestJS + TypeORM
+
+Quero ver:
+
+### Order Entity
+- id
+- customerName
+- address fields
+- status
+- totalPrice
+- relation OneToMany com OrderItem
+
+### Product Entity
+- id
+- name
+- price
+- stock
+
+### OrderItem Entity
+- id
+- order (ManyToOne)
+- product (ManyToOne)
+- quantity
+- unitPrice (snapshot)
+- totalPrice
+
+---
+
+## Regras de negócio
+
+- Order calcula totalPrice automaticamente
+- Product stock é reduzido ao criar Order
+
+```
+
+---
+## prompt para integração das rotas com react query
+
+```
+Quero que você me ajude a implementar e estruturar as rotas do frontend de um projeto React + TypeScript usando React Router DOM e React Query.
+
+Estou construindo um e-commerce chamado "Case Cell Shop".
+
+---
+
+## STACK
+- React + TypeScript
+- React Router DOM v6
+- React Query (TanStack Query)
+- Axios (ou fetch)
+- TailwindCSS
+
+---
+
+## FLUXO DA APLICAÇÃO
+
+Quero essas rotas:
+
+### Públicas
+- /products → listagem de produtos
+- /cart → carrinho de compras
+- /checkout → confirmação do pedido
+- /history → histórico de pedidos
+- /history/:id → detalhe do pedido
+
+---
+
+## BACKEND (já existe)
+Tenho uma API com as seguintes rotas:
+
+### Products
+- GET /products
+- GET /products/:id
+- POST /products
+- PATCH /products/:id
+- DELETE /products/:id
+
+### Orders
+- GET /orders
+- GET /orders/:id
+- POST /orders
+- PATCH /orders/:id/cancel
+
+---
+
+## O QUE EU QUERO QUE VOCÊ FAÇA
+
+Quero que você atue como um mentor técnico e me ajude a:
+
+### 1. Estruturar React Query corretamente
+- como criar o QueryClient
+- como configurar o provider
+- como organizar hooks (useProducts, useOrders etc.)
+
+---
+
+### 2. Criar hooks com React Query
+Quero hooks organizados como:
+
+- useProducts()
+- useProduct(id)
+- useOrders()
+- useOrder(id)
+- useCreateOrder()
+- useCancelOrder()
+
+Explique como separar query e mutation corretamente.
+
+---
+
+### 3. Integrar com React Router
+- como passar dados entre rotas (cart → checkout)
+- quando usar state vs query cache
+- como evitar perda de dados no fluxo
+
+---
+
+### 4. Fluxo de checkout
+Quero entender:
+- como pegar dados do carrinho
+- como enviar POST /orders
+- como invalidar cache do React Query depois da compra
+- como redirecionar para tela de sucesso
+
+---
+
+### 5. Boas práticas
+- onde colocar hooks
+- onde colocar services de API
+- como tipar respostas corretamente
+- como lidar com loading/error states
+
+---
+
+## IMPORTANTE
+- Explique antes de codar
+- Me mostre estrutura de pastas ideal
+- Me mostre alternativas simples vs escaláveis
+- Não pule etapas
+- Pense como um dev senior me orientando
+
+Vamos começar pela estrutura base do React Query + rotas.
+```
+
+## IA para auxilio na construção das telas
+
+## 🤖 AI-assisted development
+
+Parte da interface do frontend foi estruturada com auxílio da ferramenta:
+
+- v0 by Vercel (https://v0.dev)
+
+A ferramenta foi utilizada para acelerar a criação de componentes e layouts baseados em React + Tailwind, servindo como base inicial para evolução manual do projeto.
+
+Todo o código foi revisado, adaptado e ajustado para se adequar à arquitetura do sistema e integração com React Query e API backend.
+
+
 # Autor
 
 Lucas Willian de Souza Serpa
