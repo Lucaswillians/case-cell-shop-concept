@@ -38,6 +38,7 @@ O sistema foi dividido em dois repositórios:
 * PostgreSQL
 * Docker
 * Jest
+* redis
 
 ---
 
