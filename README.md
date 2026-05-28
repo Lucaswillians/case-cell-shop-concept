@@ -166,6 +166,11 @@ Body:
 
 Após criar os produtos, o frontend já conseguirá listar os itens automaticamente na tela inicial.
 
+abaixo esta anexado exemplo do insomnia utilizado para baixar:
+
+[Uploading Insomnia_2026-05-28.yaml…]()
+
+
 ---
 
 # Frontend
